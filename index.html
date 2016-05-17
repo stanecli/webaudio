@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>Web Audio API</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--external libs-->
+    <script src="js/prototype.js"></script>
+    <script src="js/createjs-2015.11.26.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/jquery-2.2.3.min.js"></script>
+
+    <!--classes-->
+    <script src="js/WAT.js"></script>
+    <script src="js/AudioPlayer.js"></script>
+    <script src="js/Visualizer.js"></script>
+    <script src="js/FreqBarVisualizer.js"></script>
+    <script src="js/CircleBarVisualizer.js"></script>
+    <script src="js/CircleVisualizer.js"></script>
+    <script src="js/PulseVisualizer.js"></script>
+    <script src="js/CloudVisualizer.js"></script>
+
+</head>
+<body>
+
+<div class="table">
+    <div class="tcell">
+        <div id="circle-visualizers"></div>
+    </div>
+</div>
+
+<script>
+    var player = new WAT.AudioPlayer([
+//        {"src": "audio/xilent.mp3", "id": "xilent"},
+        {"src": "audio/bell.mp3", "id": "bell"},
+        {"src": "audio/drum.mp3", "id": "drum"},
+        {"src": "audio/fx.mp3", "id": "fx"},
+        {"src": "audio/pad.mp3", "id": "pad"},
+        {"src": "audio/perc.mp3", "id": "perc"},
+        {"src": "audio/bass.mp3", "id": "bass"}
+    ]);
+    player.onLoadComplete = function () {
+//        this.play('xilent');
+        this.play('bell');
+        this.play('drum');
+        this.play('fx');
+        this.play('pad');
+        this.play('perc');
+        this.play('bass');
+    };
+    var pulse = new WAT.PulseVisualizer({
+        player: player,
+        sound: 'drum',
+        fft: 64,
+        freq: 1,
+        division: 1,
+        width: 500,
+        height: 500
+    });
+    var circleBars = new WAT.CircleBarVisualizer({
+        player: player,
+        sound: 'perc',
+        fft: 128,
+        width: 500,
+        height: 500,
+        offset: 5,
+        clip: 0.6
+    });
+    var padClouds = new WAT.CloudVisualizer({
+        player: player,
+        sound: 'pad',
+        fft: 32,
+        width: 500,
+        height: 500,
+        freq: 1
+    });
+//    var freqBars = new WAT.FreqBarVisualizer({
+//        player: player,
+//        sound: 'pad',
+//        fft: 32,
+//        width: 500,
+//        height: 500,
+//        freq: 1
+//    });
+</script>
+</body>
+</html>
