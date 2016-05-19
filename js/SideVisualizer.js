@@ -71,10 +71,10 @@
          */
         createArcs: function () {
             this.arcs = [];
-            this.createArc('left', 0, 10, 1, 0);
-            this.createArc('left', 0.5, 0, 2, 2);
-            this.createArc('right', 0, 10, 1, 0);
-            this.createArc('right', 0.5, 0, 2, 2);
+            this.createArc('left', 0.5, 20, 1, 0);
+            this.createArc('left', 1, 10, 2, 2);
+            this.createArc('right', 0.5, 20, 1, 0);
+            this.createArc('right', 1, 10, 2, 2);
         }
     });
 

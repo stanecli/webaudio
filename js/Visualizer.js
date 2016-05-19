@@ -64,13 +64,16 @@
          * Létrehoz egy megadott méretű canvast. Méretek hiányában teljes képernyős canvast hoz létre.
          */
         createStage: function () {
-            var canvas = $('<canvas/>').attr({
-                width: this.width,
-                height: this.height
-            });
+            var canvas = $('<canvas/>')
+                .attr({
+                    width: this.width,
+                    height: this.height
+                });
 
             //konténer
-            var wrapper = $('<div/>').addClass('visualizer-center');
+            var wrapper = $('<div/>')
+                .addClass('visualizer-center')
+                .css({top: -this.height / 2});
             wrapper.append(canvas);
 
             //betesszük a domba

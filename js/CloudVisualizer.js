@@ -11,6 +11,7 @@
          * @param options paraméterek. Lásd szülő classok
          */
         initialize: function ($super, options) {
+            this.size = options.size;
             this.queue = new createjs.LoadQueue();
             this.queue.loadManifest([
                 {src: 'img/pad_clouds_smooth.png', id: 'pad_clouds'}
@@ -32,7 +33,7 @@
             this.getFreqData();
             var alpha = (this.getFreq(this.freq) - 0.3) * 3;
             this.cloudLeft.alpha = this.cloudRight.alpha = alpha;
-            this.cloudLeft.scaleX = this.cloudRight.scaleX = this.cloudLeft.scaleY = this.cloudRight.scaleY = 0.85 + (this.getFreq(this.freq) - 0.5) * 0.25;
+            this.cloudLeft.scaleX = this.cloudRight.scaleX = this.cloudLeft.scaleY = this.cloudRight.scaleY = this.size + (this.getFreq(this.freq) - 0.5) * 0.25;
             this.stage.update();
         },
 
