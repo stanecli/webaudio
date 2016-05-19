@@ -26,13 +26,14 @@
          */
         update: function () {
             this.getFreqData();
-            var freq = this.getFreq(this.freq);
-            var alpha = (freq - 0.3) * 3;
+            var commonFreq = this.getFreq(this.freq);
+            var alpha;
             var arc;
             for (var i = 0, len = this.arcs.length; i < len; i++) {
                 arc = this.arcs[i];
+                alpha = (this.getFreq(arc.freq) - 0.3) * 3;
                 arc.alpha = alpha;
-                arc.x = arc.originalPos + arc.dir * arc.reactFactor * freq * 100;
+                arc.x = arc.originalPos + arc.dir * arc.reactFactor * commonFreq * 100;
             }
             this.stage.update();
         },
@@ -44,7 +45,7 @@
          * @param {Number} [offset=0] hány arc-nyival toljuk el (hanyadik arc az oldalon)
          * @param {Number} [reactFactor=1] mennyire reagáljon az amplitúdóra 1 a default
          */
-        createArc: function (dir, offset, margin, reactFactor) {
+        createArc: function (dir, offset, margin, reactFactor, freqOffset) {
             var dir = dir === 'left' ? -1 : 1;
             var reactFactor = reactFactor || 1;
             var offset = offset || 0;
@@ -53,6 +54,7 @@
             var bounds = arc.getBounds();
             arc.regX = bounds.width / 2;
             arc.regY = bounds.height / 2;
+            arc.freq = this.freq + freqOffset;
             arc.dir = dir;
             arc.rotation = 90 * (1 + 1 * dir);
             arc.originalPos = this.width / 2 + dir * (200 + margin + bounds.width * offset);
@@ -69,10 +71,10 @@
          */
         createArcs: function () {
             this.arcs = [];
-            this.createArc('left', 0, 10, 1);
-            this.createArc('left', 0.5, 0, 2);
-            this.createArc('right', 0, 10, 1);
-            this.createArc('right', 0.5, 0, 2);
+            this.createArc('left', 0, 10, 1, 0);
+            this.createArc('left', 0.5, 0, 2, 2);
+            this.createArc('right', 0, 10, 1, 0);
+            this.createArc('right', 0.5, 0, 2, 2);
         }
     });
 
