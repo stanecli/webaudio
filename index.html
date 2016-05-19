@@ -23,6 +23,7 @@
     <script src="js/CircleVisualizer.js"></script>
     <script src="js/PulseVisualizer.js"></script>
     <script src="js/CloudVisualizer.js"></script>
+    <script src="js/SideVisualizer.js"></script>
 
 </head>
 <body>
@@ -55,7 +56,7 @@
     var pulse = new WAT.PulseVisualizer({
         player: player,
         sound: 'drum',
-        fft: 64,
+        fft: 32,
         freq: 1,
         division: 1,
         width: 500,
@@ -63,7 +64,7 @@
     });
     var circleBars = new WAT.CircleBarVisualizer({
         player: player,
-        sound: 'perc',
+        sound: 'bell',
         fft: 128,
         width: 500,
         height: 500,
@@ -78,13 +79,21 @@
         height: 500,
         freq: 1
     });
+    var freqBars = new WAT.Sideisualizer({
+        player: player,
+        sound: 'bass',
+        fft: 32,
+        width: 1200,
+        height: 500,
+        freq: 3
+    });
 //    var freqBars = new WAT.FreqBarVisualizer({
 //        player: player,
-//        sound: 'pad',
-//        fft: 32,
-//        width: 500,
+//        sound: 'bass',
+//        fft: 128,
+//        width: 1200,
 //        height: 500,
-//        freq: 1
+//        freq: 2
 //    });
 </script>
 </body>

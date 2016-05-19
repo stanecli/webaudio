@@ -13,7 +13,7 @@
         initialize: function ($super, options) {
             this.queue = new createjs.LoadQueue();
             this.queue.loadManifest([
-                {src: 'img/pad_clouds.png', id: 'pad_clouds'}
+                {src: 'img/pad_clouds_smooth.png', id: 'pad_clouds'}
             ]);
             this.queue.on("complete", function () {
                 $super(options);
@@ -33,6 +33,8 @@
             var alpha = (this.getFreq(this.freq) - 0.3) * 3;
             this.cloudLeft.alpha = this.cloudRight.alpha = alpha;
             this.cloudLeft.scaleX = this.cloudRight.scaleX = this.cloudLeft.scaleY = this.cloudRight.scaleY = 0.85 + (this.getFreq(this.freq) - 0.5) * 0.25;
+            //this.cloudLeft.x = this.width / 2 - alpha * 10;
+            //this.cloudRight.x = this.width / 2 + alpha * 10;
             this.stage.update();
         },
 

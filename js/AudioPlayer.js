@@ -36,7 +36,7 @@ WAT.AudioPlayer = Class.create({
         analyser.fftSize = 128;
         analyser.minDecibels = -65;
         analyser.maxDecibels = -20;
-        analyser.smoothingTimeConstant = 0.86;
+        analyser.smoothingTimeConstant = 0.7;
 
         this.analysers[id] = analyser;
     },
