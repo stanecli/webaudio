@@ -62,9 +62,6 @@
             arc.alpha = 0;
             this.stage.addChild(arc);
             this.arcs.push(arc);
-
-            console.log(arc.originalPos);
-            console.log(arc.rotation);
         },
 
         /**
